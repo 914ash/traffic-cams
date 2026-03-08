@@ -1,0 +1,190 @@
+/**
+ * ABOUTME: Premium mission-control styling for Stitch UI.
+ * ABOUTME: Implements dark-mode, glassmorphism, and HUD aesthetics.
+ */
+
+:root {
+  --neon-green: #39ff14;
+  --dark-bg: rgba(10, 10, 10, 0.85);
+  --glass-blur: blur(10px);
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', 'Roboto', sans-serif;
+}
+
+.stitch-ui {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hud-top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  padding: 15px 25px;
+  background: var(--dark-bg);
+  backdrop-filter: var(--glass-blur);
+  border-left: 4px solid var(--neon-green);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.hud-top-left h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.status-indicator {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.status-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-indicator.online::before {
+  background-color: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.reconnecting::before {
+  background-color: #ffaa00;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.hud-bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  padding: 10px 15px;
+  background: var(--dark-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: var(--neon-green);
+}
+
+.feed-inspector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 80px;
+  width: 400px;
+  background: var(--dark-bg);
+  backdrop-filter: var(--glass-blur);
+  border-right: 4px solid var(--neon-green);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.inspector-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--neon-green);
+  letter-spacing: 1px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+.feed-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #111;
+  border: 1px solid #333;
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-video, .live-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.metadata-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-item label {
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.meta-item span {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.viewport {
+  width: 100%;
+  height: 100%;
+}

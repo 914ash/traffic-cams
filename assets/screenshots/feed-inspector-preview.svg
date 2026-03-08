@@ -1,0 +1,21 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" rx="32" fill="#0B121A"/>
+  <rect x="34" y="34" width="1372" height="832" rx="26" fill="#101B25" stroke="#2A3E52"/>
+  <rect x="70" y="84" width="668" height="720" rx="22" fill="#0A1118"/>
+  <rect x="772" y="84" width="600" height="720" rx="22" fill="#0E1823"/>
+  <rect x="96" y="120" width="616" height="400" rx="18" fill="#1C3142"/>
+  <path d="M118 476L228 372L336 430L450 278L566 330L690 214" stroke="#FFBF69" stroke-width="6" stroke-linecap="round"/>
+  <text x="106" y="566" fill="#F3F0E7" font-size="34" font-family="Georgia, serif">Feed inspector</text>
+  <text x="106" y="614" fill="#9CB3C5" font-size="24" font-family="'Trebuchet MS', sans-serif">Map context, live preview, and operator notes</text>
+  <rect x="804" y="118" width="536" height="130" rx="18" fill="#173042"/>
+  <rect x="804" y="270" width="536" height="190" rx="18" fill="#132432"/>
+  <rect x="804" y="486" width="536" height="140" rx="18" fill="#1A2B3A"/>
+  <rect x="804" y="650" width="536" height="122" rx="18" fill="#12212E"/>
+  <text x="836" y="170" fill="#FFBF69" font-size="21" font-family="'Courier New', monospace">CAMERA PROFILE</text>
+  <text x="836" y="210" fill="#F3F0E7" font-size="32" font-family="Georgia, serif">M4 Junction Northbound</text>
+  <text x="836" y="320" fill="#C9D6E1" font-size="20" font-family="'Courier New', monospace">provider: TfL JamCam</text>
+  <text x="836" y="356" fill="#C9D6E1" font-size="20" font-family="'Courier New', monospace">status: online</text>
+  <text x="836" y="392" fill="#C9D6E1" font-size="20" font-family="'Courier New', monospace">region: west corridor</text>
+  <text x="836" y="544" fill="#F3F0E7" font-size="20" font-family="'Courier New', monospace">notes, tags, and feed triage cues</text>
+  <text x="836" y="706" fill="#9CB3C5" font-size="18" font-family="'Courier New', monospace">handoff path to larger monitoring workflow</text>
+</svg>

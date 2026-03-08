@@ -1,0 +1,34 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#09111B"/>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1175" cy="190" r="260" fill="url(#radar)" opacity="0.9"/>
+  <circle cx="1175" cy="190" r="210" stroke="#FFBF69" stroke-opacity="0.45"/>
+  <circle cx="1175" cy="190" r="150" stroke="#FFBF69" stroke-opacity="0.35"/>
+  <circle cx="1175" cy="190" r="90" stroke="#FFBF69" stroke-opacity="0.25"/>
+  <path d="M1015 350L1325 30" stroke="#FFBF69" stroke-width="3" stroke-opacity="0.5"/>
+  <rect x="74" y="88" width="568" height="724" rx="28" fill="#0F1A28" fill-opacity="0.82" stroke="#2A3E54"/>
+  <text x="118" y="178" fill="#F4EFE6" font-size="84" font-family="Georgia, serif" letter-spacing="3">TRAFFIC</text>
+  <text x="118" y="260" fill="#F4EFE6" font-size="84" font-family="Georgia, serif" letter-spacing="3">CAMS</text>
+  <text x="121" y="334" fill="#FFBF69" font-size="24" font-family="'Courier New', monospace">PUBLIC FEEDS / GEO OPS / CAMERA TRIAGE</text>
+  <text x="120" y="430" fill="#C6D4E1" font-size="30" font-family="'Trebuchet MS', sans-serif">A mission-control style surface for</text>
+  <text x="120" y="470" fill="#C6D4E1" font-size="30" font-family="'Trebuchet MS', sans-serif">monitoring public traffic-camera networks</text>
+  <text x="120" y="510" fill="#C6D4E1" font-size="30" font-family="'Trebuchet MS', sans-serif">across a live geospatial canvas.</text>
+  <rect x="120" y="590" width="468" height="118" rx="20" fill="#162535" stroke="#39536D"/>
+  <text x="152" y="648" fill="#F4EFE6" font-size="26" font-family="'Courier New', monospace">CESIUM / REACT / NODE / WEBSOCKETS</text>
+  <text x="152" y="686" fill="#90A8BC" font-size="21" font-family="'Courier New', monospace">Austin DOT   TfNSW   TfL JamCam</text>
+  <rect x="760" y="540" width="684" height="230" rx="30" fill="#0D1825" fill-opacity="0.88" stroke="#2A455D"/>
+  <text x="812" y="618" fill="#FFBF69" font-size="22" font-family="'Courier New', monospace">SIGNAL</text>
+  <text x="812" y="666" fill="#F3F0E7" font-size="56" font-family="Georgia, serif">See the globe.</text>
+  <text x="812" y="728" fill="#AFC0CF" font-size="30" font-family="'Trebuchet MS', sans-serif">Then see the feed, the region, and the decision surface.</text>
+  <defs>
+    <linearGradient id="bg" x1="126" y1="79" x2="1469" y2="862" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1825"/>
+      <stop offset="0.55" stop-color="#122638"/>
+      <stop offset="1" stop-color="#09111B"/>
+    </linearGradient>
+    <radialGradient id="radar" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1175 190) rotate(90) scale(260)">
+      <stop stop-color="#FFBF69" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFBF69" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
