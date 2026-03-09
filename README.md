@@ -1,5 +1,7 @@
 # Traffic Cams
 
+![Traffic Cams cover](assets/covers/cover.svg)
+
 Traffic Cams is a web app for reviewing public traffic-camera networks on a shared map surface.
 It is built for the moment when an operator needs to go from "which cameras cover this area?" to "show me the useful one" without digging through raw agency portals.
 
