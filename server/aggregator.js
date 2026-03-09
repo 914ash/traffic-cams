@@ -2,8 +2,8 @@ const axios = require('axios');
 const { upsertCameras, logMetric } = require('./database');
 
 /**
- * ABOUTME: Core aggregator logic for Stitch UI.
- * ABOUTME: Responsible for polling international traffic cam sources and normalizing data.
+ * Core aggregator logic for traffic-cams.
+ * Polls public traffic-camera sources and normalizes them into one schema.
  */
 
 const SOURCES = [

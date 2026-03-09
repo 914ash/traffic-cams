@@ -1,6 +1,6 @@
 /**
- * ABOUTME: Database integration for Stitch UI.
- * ABOUTME: Handles LanceDB for spatial indexing and InfluxDB for time-series metrics.
+ * Database integration for traffic-cams.
+ * Uses LanceDB for local spatial storage and InfluxDB for optional metrics.
  */
 
 const lancedb = require('@lancedb/lancedb');

@@ -1,31 +1,34 @@
 import { useEffect, useState } from 'react';
 import GlobeView from './components/GlobeView';
 import FeedInspector from './components/FeedInspector';
+import { demoCameras } from './demo/demoCameras';
+import { readRuntimeConfig } from './lib/runtimeConfig';
+import type { RuntimeEnv } from './lib/runtimeConfig';
+import type { Camera } from './types';
 import './App.css';
 
-interface Camera {
-  id: string;
-  lat: number;
-  lng: number;
-  name: string;
-  direction: string;
-  source: string;
-  feedUrl: string;
-  feedType: 'image' | 'video';
-  lastUpdated: string;
-}
-
 function App() {
-  const [cameras, setCameras] = useState<Camera[]>([]);
-  const [selectedCamera, setSelectedCamera] = useState<Camera | null>(null);
-  const [status, setStatus] = useState('Connecting to aggregator...');
+  const [runtimeConfig] = useState(() =>
+    readRuntimeConfig(window.location.search, import.meta.env as RuntimeEnv),
+  );
+  const [cameras, setCameras] = useState<Camera[]>(runtimeConfig.demoMode ? demoCameras : []);
+  const [selectedCamera, setSelectedCamera] = useState<Camera | null>(() => {
+    const selectedId = new URLSearchParams(window.location.search).get('selected');
+    return demoCameras.find((camera) => camera.id === selectedId) ?? null;
+  });
+  const [status, setStatus] = useState(
+    runtimeConfig.demoMode ? 'Recorded demo feed ready' : 'Connecting to traffic feed…',
+  );
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3001');
+    if (runtimeConfig.demoMode) {
+      return;
+    }
+
+    const ws = new WebSocket(runtimeConfig.wsUrl);
 
     ws.onopen = () => {
-      setStatus('System Linked');
-      console.log('Linked to Stitch UI Aggregator');
+      setStatus('Live feed connected');
     };
 
     ws.onmessage = (event) => {
@@ -42,23 +45,29 @@ function App() {
     };
 
     ws.onclose = () => {
-      setStatus('Link Lost - Retrying...');
+      setStatus('Live feed reconnecting…');
     };
 
     return () => ws.close();
-  }, []);
+  }, [runtimeConfig.demoMode, runtimeConfig.wsUrl]);
 
   return (
-    <div className="stitch-ui">
+    <div className="traffic-monitor">
       <header className="hud-top-left">
-        <h1>STITCH UI // MISSION CONTROL</h1>
-        <div className={`status-indicator ${status.includes('Linked') ? 'online' : 'reconnecting'}`}>
+        <p className="eyebrow">Traffic camera operations</p>
+        <h1>Review camera coverage across multiple public networks.</h1>
+        <div className={`status-indicator ${status.includes('connected') || status.includes('ready') ? 'online' : 'reconnecting'}`}>
           {status}
         </div>
       </header>
 
       <main className="viewport">
-        <GlobeView cameras={cameras} onSelectCamera={setSelectedCamera} />
+        <GlobeView
+          cameras={cameras}
+          mapMode={runtimeConfig.mapMode}
+          selectedCameraId={selectedCamera?.id ?? null}
+          onSelectCamera={setSelectedCamera}
+        />
       </main>
 
       {selectedCamera && (
@@ -69,7 +78,7 @@ function App() {
       )}
 
       <div className="hud-bottom-right">
-        <div className="camera-count">ACTIVE NODES: {cameras.length}</div>
+        <div className="camera-count">Active cameras: {cameras.length}</div>
       </div>
     </div>
   );

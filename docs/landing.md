@@ -1,36 +1,21 @@
-# Traffic Cams Landing
+# Traffic Cams Walkthrough
 
-![Traffic Cams cover](../assets/covers/cover.svg)
+Traffic Cams is easiest to judge as an app, not as a concept. Start with the screenshots, then read the backend and frontend together.
 
-## What This Is
+## Evidence
 
-Traffic Cams is a geospatial monitoring prototype that turns public traffic-camera feeds into a realtime, operator-facing globe interface.
+![Traffic Cams overview](../assets/screenshots/traffic-cams-demo-overview.png)
+The overview shows the shared coverage surface used to review multiple public camera networks at once.
 
-## Who It Is For
+![Traffic Cams inspector](../assets/screenshots/traffic-cams-demo-selected.png)
+The selected-camera view shows the handoff from map coverage to the operator detail panel.
 
-This repo is for reviewers who want to evaluate geospatial UI design, public-feed normalization, and command-center style interface thinking in one project.
+## What To Review
 
-## Why This Exists
+1. Read [README.md](../README.md) for the short summary and demo instructions.
+2. Open [`server/aggregator.js`](../server/aggregator.js) to see how the source payloads are normalized.
+3. Open [`client/src/App.tsx`](../client/src/App.tsx) and [`client/src/components/GlobeView.tsx`](../client/src/components/GlobeView.tsx) to see how the UI consumes the normalized feed.
 
-The portfolio value of this repo is not just the map. It is the full path from multi-source feed ingestion to a readable operator surface: source adapters, backend normalization, websocket updates, and a client that treats location and feed state as first-class UI concerns.
+## Why The Demo Path Exists
 
-## Screenshot Walkthrough
-
-![Traffic globe preview](../assets/screenshots/globe-ops-preview.svg)
-The globe view frames camera monitoring as a situational-awareness problem rather than a list-management problem.
-
-![Traffic inspector preview](../assets/screenshots/feed-inspector-preview.svg)
-The feed inspector preview shows the decision surface: location context, camera state, and rapid selection flow.
-
-## Quick Evaluation
-
-1. Read the top-level [README.md](../README.md) for quickstart and stack.
-2. Review [docs/architecture.md](architecture.md) for the ingest-to-client flow.
-3. Inspect `server/` for source normalization and `client/` for the Cesium/React surface.
-
-## Repo Signals
-
-- explicit public-data framing
-- secrets moved to ignored env files
-- concise setup path
-- mission-control presentation instead of a generic demo map
+Live map tiles and camera feeds are useful for development, but they are a poor foundation for a public repo review. The demo path keeps the camera coverage surface, the inspector, and the screenshot flow reproducible without relying on private keys or live network conditions.

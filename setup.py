@@ -1,19 +1,15 @@
-"""
-ABOUTME: Setup and diagnostic script for Stitch UI.
-ABOUTME: Verifies environment variables and provides instructions for API key provisioning.
-"""
+"""Small environment check for the traffic-cams repo."""
 
 import os
 import sys
 
 def check_env():
     required_keys = [
-        "GOOGLE_MAPS_API_KEY",
-        "CESIUM_ION_TOKEN"
+        "VITE_CESIUM_ION_TOKEN"
     ]
     
     missing = []
-    print("--- Stitch UI Environment Check ---")
+    print("--- traffic-cams environment check ---")
     
     for key in required_keys:
         val = os.getenv(key)
@@ -25,14 +21,12 @@ def check_env():
 
     if missing:
         print("\n--- Action Required ---")
-        if "GOOGLE_MAPS_API_KEY" in missing:
-            print("1. Get a Google Maps API Key with 'Photorealistic 3D Tiles' enabled.")
-            print("   URL: https://console.cloud.google.com/google/maps-apis/credentials")
-        if "CESIUM_ION_TOKEN" in missing:
-            print("2. Get a Cesium Ion Access Token.")
+        if "VITE_CESIUM_ION_TOKEN" in missing:
+            print("1. Get a Cesium Ion access token if you want the live 3D globe.")
             print("   URL: https://ion.cesium.com/tokens")
-        
-        print("\nPlease add these to your .env file in the project root.")
+
+        print("\nThe repo also supports a demo mode that does not require live map configuration.")
+        print("Add environment values to a local .env file in the project root if you want the live path.")
         return False
     
     print("\nEnvironment is ready for launch.")

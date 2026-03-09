@@ -1,28 +1,34 @@
 import React from 'react';
 import { Viewer, Cesium3DTileset, Entity, PointGraphics } from 'resium';
 import { Cartesian3, Color, Ion, GoogleMaps } from 'cesium';
-
-interface Camera {
-  id: string;
-  lat: number;
-  lng: number;
-  name: string;
-  direction: string;
-  source: string;
-  feedUrl: string;
-  feedType: 'image' | 'video';
-  lastUpdated: string;
-}
+import { CoverageMap } from './CoverageMap';
+import type { Camera } from '../types';
 
 interface GlobeViewProps {
   cameras: Camera[];
+  mapMode: 'cesium' | 'fallback';
+  selectedCameraId: string | null;
   onSelectCamera: (camera: Camera) => void;
 }
 
-// Set Ion token globally
-Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ION_TOKEN;
+const GlobeView: React.FC<GlobeViewProps> = ({
+  cameras,
+  mapMode,
+  selectedCameraId,
+  onSelectCamera,
+}) => {
+  if (mapMode === 'fallback') {
+    return (
+      <CoverageMap
+        cameras={cameras}
+        selectedCameraId={selectedCameraId}
+        onSelectCamera={onSelectCamera}
+      />
+    );
+  }
 
-const GlobeView: React.FC<GlobeViewProps> = ({ cameras, onSelectCamera }) => {
+  Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_ION_TOKEN;
+
   return (
     <Viewer 
       full 

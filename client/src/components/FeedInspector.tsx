@@ -1,16 +1,5 @@
 import React from 'react';
-
-interface Camera {
-  id: string;
-  lat: number;
-  lng: number;
-  name: string;
-  direction: string;
-  source: string;
-  feedUrl: string;
-  feedType: 'image' | 'video';
-  lastUpdated: string;
-}
+import type { Camera } from '../types';
 
 interface FeedInspectorProps {
   camera: Camera;
@@ -19,6 +8,7 @@ interface FeedInspectorProps {
 
 const FeedInspector: React.FC<FeedInspectorProps> = ({ camera, onClose }) => {
   if (!camera) return null;
+  const hasPreview = Boolean(camera.feedUrl);
 
   return (
     <div className="feed-inspector">
@@ -28,7 +18,12 @@ const FeedInspector: React.FC<FeedInspectorProps> = ({ camera, onClose }) => {
       </div>
 
       <div className="feed-container">
-        {camera.feedType === 'video' ? (
+        {!hasPreview ? (
+          <div className="demo-feed-state">
+            <strong>Recorded camera metadata</strong>
+            <span>Preview media is disabled in demo mode so the layout stays reproducible.</span>
+          </div>
+        ) : camera.feedType === 'video' ? (
           <video 
             src={camera.feedUrl} 
             controls 
@@ -61,7 +56,12 @@ const FeedInspector: React.FC<FeedInspectorProps> = ({ camera, onClose }) => {
         </div>
         <div className="meta-item">
           <label>LAST UPDATE</label>
-          <span>{new Date(camera.lastUpdated).toLocaleTimeString()}</span>
+          <span>
+            {new Date(camera.lastUpdated).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </span>
         </div>
       </div>
     </div>
