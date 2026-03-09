@@ -7,6 +7,8 @@ Before opening a PR:
 - do not commit `.env` files or credentials
 - avoid adding local logs, caches, or generated runtime state
 - keep screenshots and docs free of private information
+- use real runtime captures for README evidence; do not add mock cover/preview art
+- keep the README opening concrete: one sentence for what it is, one sentence for context
 - update docs when changing setup or architecture
 
 Run the documented verification commands before proposing changes.
