@@ -3,8 +3,6 @@
 Traffic Cams is a web app for reviewing public traffic-camera networks on a shared map surface.
 It is built for the moment when an operator needs to go from "which cameras cover this area?" to "show me the useful one" without digging through raw agency portals.
 
-![Traffic Cams overview](assets/screenshots/traffic-cams-demo-overview.png)
-![Traffic Cams inspector](assets/screenshots/traffic-cams-demo-selected.png)
 
 ## What It Does
 
