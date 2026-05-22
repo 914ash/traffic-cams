@@ -1,24 +1,24 @@
-# Traffic Cams
+# Traffic cams
 
-Traffic Cams is a map-first review tool for public traffic-camera networks. It normalizes camera metadata from multiple sources and gives a reviewer one surface for coverage scan, camera selection, and feed inspection.
+Traffic Cams is a map-first review tool for public traffic-camera networks. It normalizes camera metadata from multiple sources and gives reviewers one surface for coverage scans, camera selection and feed inspection.
 
 - **Status:** Active prototype
 - **Stack:** Node.js, React, TypeScript, WebSockets
-- **Problem:** Public traffic-camera portals are fragmented and slow to review when the real question is "which camera actually covers this area?"
+- **Problem:** Public traffic-camera portals are fragmented and slow to review when the practical question is which camera covers an area.
 
-## Why It Matters
+## Why it matters
 
 - It combines feed normalization and operator-facing UI work in the same repo.
 - It keeps public review practical with a demo mode that does not depend on live keys or feed availability.
 - It shows the difference between a map demo and a usable inspection workflow.
 
-## Repository Layout
+## Repository layout
 
-- `server/`: source polling, payload normalization, and event broadcast
-- `client/`: browser UI, globe view, and selected-camera inspector
-- `docs/`: walkthrough, architecture notes, and privacy/data notes
+- `server/`: source polling, payload normalization and event broadcast
+- `client/`: browser UI, globe view and selected-camera inspector
+- `docs/`: walkthrough, architecture notes and privacy/data notes
 
-## Run Locally
+## Run locally
 
 1. Install backend dependencies in `server/` with `npm install`.
 2. Install frontend dependencies in `client/` with `npm install`.
@@ -26,7 +26,7 @@ Traffic Cams is a map-first review tool for public traffic-camera networks. It n
 4. Start the backend with `npm start` from `server/`.
 5. Start the frontend with `npm run dev` from `client/`.
 
-## Demo Mode
+## Demo mode
 
 Use demo mode when you want a stable review path without live feeds or map keys.
 
@@ -40,12 +40,12 @@ Use demo mode when you want a stable review path without live feeds or map keys.
 - Frontend tests: `cd client && npm test`
 - Frontend build: `cd client && npm run build`
 
-## What To Read Next
+## What to read next
 
 - `docs/landing.md` for the short walkthrough
 - `server/aggregator.js` for source normalization
 - `client/src/App.tsx` and `client/src/components/GlobeView.tsx` for the main review flow
 
-## Data Notes
+## Data notes
 
-This repo is built around public or public-facing traffic feeds. Feed formats and availability can change without notice, which is why the demo path exists and why the screenshots are tied to recorded data rather than live network conditions.
+This repo is built around public or public-facing traffic feeds. Feed formats and availability can change without notice, so the demo path exists and the screenshots are tied to recorded data rather than live network conditions.
